@@ -13,7 +13,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <!-- plugins teste-->
+    <!-- plugins teste teste-->
     <build>
         <plugins>
             <plugin>
