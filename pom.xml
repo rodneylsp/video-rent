@@ -13,7 +13,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <!-- plugins teste teste-->
+    <!-- plugins teste com -->
     <build>
 
         <plugins>
@@ -25,7 +25,6 @@
                     <source>8</source>
                     <target>8</target>
                 </configuration>
-
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
