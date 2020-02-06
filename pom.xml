@@ -15,6 +15,7 @@
 
     <!-- plugins teste com -->
     <build>
+
         <plugins>
             <plugin>
 
