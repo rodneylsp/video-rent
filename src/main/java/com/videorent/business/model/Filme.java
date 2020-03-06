@@ -1,36 +1,23 @@
 package com.videorent.business.model;
 
 import com.videorent.business.model.enums.GeneroEnum;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-public class Filme {
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "FILME")
+@Getter
+@Setter
+@NoArgsConstructor
+public class Filme implements AbstractEntity {
 
     private Long id;
     private String titulo;
     private Integer ano;
     private GeneroEnum genero;
 
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
-    public String getTitulo() {
-        return titulo;
-    }
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-    public Integer getAno() {
-        return ano;
-    }
-    public void setAno(Integer ano) {
-        this.ano = ano;
-    }
-    public GeneroEnum getGenero() {
-        return genero;
-    }
-    public void setGenero(GeneroEnum genero) {
-        this.genero = genero;
-    }
 }
