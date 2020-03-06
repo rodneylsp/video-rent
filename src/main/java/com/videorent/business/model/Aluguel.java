@@ -7,6 +7,8 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import java.io.Serializable;
 import java.util.Currency;
 import java.util.Date;
 import java.util.List;
@@ -16,12 +18,13 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Aluguel implements AbstractEntity {
+public class Aluguel implements AbstractEntity, Serializable {
 
     @Id
     private Long id;
     private Date data;
     private Cliente cliente;
+    @Transient
     private List<Box> filmes;
     private Currency total;
 

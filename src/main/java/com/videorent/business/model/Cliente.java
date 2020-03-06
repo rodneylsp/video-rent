@@ -20,4 +20,11 @@ public class Cliente implements AbstractEntity, Serializable {
     private Long id;
     private String nome;
 
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                '}';
+    }
 }
