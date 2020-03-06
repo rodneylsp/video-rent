@@ -25,6 +25,9 @@ public class ClienteDAO extends GenericDAO implements DAO<Cliente> {
 
     @Override
     public void insert(Cliente entity) {
+        logger.debug("Inserindo cliente {}", entity);
+
+
         EntityTransaction tx = entityManager.getTransaction();
         tx.begin();
         entityManager.persist(entity);
