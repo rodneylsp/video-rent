@@ -31,12 +31,14 @@ public class ClienteServiceImpl implements IClienteService {
         if(cliente == null){
             throw new IllegalArgumentException("Parametro invalido.");
         }
-        logger.debug("Cliente inserido");
 
         if(cliente.getNome().length() < 20){
             throw new BusinessException("Nome invalido");
         }
+        dao = ClienteDAO.getInstance(JPAUtil.getEntityManager());
         dao.insert(cliente);
+
+        logger.debug("Cliente inserido");
     }
 
     @Override
