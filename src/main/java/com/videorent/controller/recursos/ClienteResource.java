@@ -2,6 +2,7 @@ package com.videorent.controller.recursos;
 
 import com.videorent.business.model.Cliente;
 import com.videorent.business.service.IClienteService;
+import com.videorent.exception.BusinessException;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -20,7 +21,11 @@ public class ClienteResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response inserir(Cliente cliente){
 
-        service.inserir(cliente);
+        try {
+            service.inserir(cliente);
+        } catch (BusinessException e) {
+            e.printStackTrace();
+        }
         return Response.status(Response.Status.OK).build();
     }
 
