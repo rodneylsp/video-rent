@@ -7,13 +7,14 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "CLIENTE")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Cliente implements AbstractEntity {
+public class Cliente implements AbstractEntity, Serializable {
 
     @Id
     private Long id;

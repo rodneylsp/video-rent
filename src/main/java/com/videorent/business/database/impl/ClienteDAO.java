@@ -8,6 +8,8 @@ import org.apache.logging.log4j.Logger;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
+import java.util.List;
 
 public class ClienteDAO extends GenericDAO implements DAO<Cliente> {
 
@@ -15,9 +17,9 @@ public class ClienteDAO extends GenericDAO implements DAO<Cliente> {
 
     private ClienteDAO(){}
 
-    public static ClienteDAO getInstance(final EntityManager entityManager_){
-        logger.debug("Instanciando " + ClienteDAO.class.getName());
-        entityManager = entityManager_;
+    public static ClienteDAO getInstance(final EntityManager entityManager1){
+        logger.debug("Instanciando {}",ClienteDAO.class.getName());
+        entityManager = entityManager1;
         return new ClienteDAO();
     }
 
@@ -32,6 +34,12 @@ public class ClienteDAO extends GenericDAO implements DAO<Cliente> {
     @Override
     public Cliente findById(Long id) {
         return entityManager.find(Cliente.class, id);
+    }
+
+    @Override
+    public List<Cliente> findAll() {
+        Query query = entityManager.createQuery("select c from Cliente c");
+        return (List<Cliente>) query.getResultList();
     }
 
     @Override

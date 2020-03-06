@@ -9,7 +9,6 @@ import com.videorent.exception.BusinessException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ClienteServiceImpl implements IClienteService {
@@ -20,7 +19,7 @@ public class ClienteServiceImpl implements IClienteService {
     private ClienteServiceImpl(){}
 
     public static ClienteServiceImpl getInstance(){
-        logger.debug("Instanciando " + ClienteServiceImpl.class.getName());
+        logger.debug("Instanciando {}", ClienteServiceImpl.class.getName());
         dao = ClienteDAO.getInstance(JPAUtil.getEntityManager());
         return new ClienteServiceImpl();
     }
@@ -42,7 +41,7 @@ public class ClienteServiceImpl implements IClienteService {
 
     @Override
     public List<Cliente> findAll() {
-        return null;
+        return dao.findAll();
     }
 
 
