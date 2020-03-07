@@ -9,19 +9,20 @@ import com.videorent.exception.BusinessException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.inject.Inject;
+import javax.inject.Named;
 import java.util.List;
 
+@Named
 public class ClienteServiceImpl implements IClienteService {
 
     private static Logger logger = LogManager.getLogger(ClienteServiceImpl.class);
     private static DAO<Cliente> dao;
 
-    private ClienteServiceImpl(){}
-
-    public static ClienteServiceImpl getInstance(){
+    @Inject
+    public ClienteServiceImpl(DAO<Cliente> clienteDAO){
         logger.debug("Instanciando {}", ClienteServiceImpl.class.getName());
-        dao = ClienteDAO.getInstance(JPAUtil.getEntityManager());
-        return new ClienteServiceImpl();
+        dao = clienteDAO;
     }
 
     @Override
@@ -35,7 +36,6 @@ public class ClienteServiceImpl implements IClienteService {
         if(cliente.getNome().length() < 20){
             throw new BusinessException("Nome invalido");
         }
-        dao = ClienteDAO.getInstance(JPAUtil.getEntityManager());
         dao.insert(cliente);
 
         logger.debug("Cliente inserido");

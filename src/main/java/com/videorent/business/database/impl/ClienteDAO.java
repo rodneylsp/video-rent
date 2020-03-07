@@ -6,6 +6,7 @@ import com.videorent.business.model.Cliente;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
@@ -15,12 +16,10 @@ public class ClienteDAO extends GenericDAO implements DAO<Cliente> {
 
     private static final Logger logger = LogManager.getLogger(ClienteDAO.class);
 
-    private ClienteDAO(){}
-
-    public static ClienteDAO getInstance(final EntityManager entityManager1){
+    @Inject
+    public ClienteDAO(final EntityManager entityManager1){
         logger.debug("Instanciando {}",ClienteDAO.class.getName());
         entityManager = entityManager1;
-        return new ClienteDAO();
     }
 
     @Override

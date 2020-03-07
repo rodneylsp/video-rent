@@ -18,19 +18,19 @@ public class ClienteDAOTest {
         entityManager = JPAUtil.getEntityManager();
     }
 
-    @Test
+    //@Test
     public void inserirClienteTest(){
 
         Cliente cliente = new Cliente();
         cliente.setId(2L);
         cliente.setNome("Rodney");
 
-        ClienteDAO dao = ClienteDAO.getInstance(entityManager);
-        dao.insert(cliente);
-
-        Cliente clienteEncontrado = dao.findById(2L);
-
-        Assert.assertNotNull(clienteEncontrado);
-        Assert.assertEquals("Rodney", clienteEncontrado.getNome());
+//        ClienteDAO dao = ClienteDAO.getInstance(entityManager);
+//        dao.insert(cliente);
+//
+//        Cliente clienteEncontrado = dao.findById(2L);
+//
+//        Assert.assertNotNull(clienteEncontrado);
+//        Assert.assertEquals("Rodney", clienteEncontrado.getNome());
     }
 }
