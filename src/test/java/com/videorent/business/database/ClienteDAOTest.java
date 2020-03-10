@@ -33,7 +33,6 @@ public class ClienteDAOTest {
     public void inserirClienteTest(){
 
         Cliente cliente = new Cliente();
-        cliente.setId(3L);
         cliente.setNome("Rodney Luiz da Silva Pereira");
 
         dao.insert(cliente);
@@ -47,12 +46,10 @@ public class ClienteDAOTest {
     public void findAllTest(){
 
         Cliente cliente = new Cliente();
-        cliente.setId(1L);
         cliente.setNome("Rodney");
         dao.insert(cliente);
 
         cliente = new Cliente();
-        cliente.setId(2L);
         cliente.setNome("Jose");
         dao.insert(cliente);
 

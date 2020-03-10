@@ -8,6 +8,10 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
         <class>com.videorent.business.model.Cliente</class>
+        <class>com.videorent.business.model.Filme</class>
+        <class>com.videorent.business.model.Box</class>
+        <class>com.videorent.business.model.Aluguel</class>
+
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>

@@ -4,9 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Currency;
 
@@ -19,8 +17,15 @@ import java.util.Currency;
 public class Box implements AbstractEntity, Serializable {
 
     @Id
+    @GeneratedValue
+    @Column(name = "BOX_ID")
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "FILM_ID")
     private Filme filme;
-    private Currency preco;
+
+    @Column(name = "BOX_PRECO")
+    private Double preco;
 
  }

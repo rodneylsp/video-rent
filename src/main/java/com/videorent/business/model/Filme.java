@@ -5,9 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -18,9 +16,18 @@ import java.io.Serializable;
 public class Filme implements AbstractEntity, Serializable {
 
     @Id
+    @GeneratedValue
+    @Column(name = "FILM_ID")
     private Long id;
+
+    @Column(name = "FILM_TITULO")
     private String titulo;
+
+    @Column(name = "FILM_ANO")
     private Integer ano;
+
+    @Column(name = "FILM_GENERO")
+    @Enumerated(EnumType.STRING)
     private GeneroEnum genero;
 
 }

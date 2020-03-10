@@ -4,10 +4,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "CLIENTE")
@@ -17,8 +16,15 @@ import java.io.Serializable;
 public class Cliente implements AbstractEntity, Serializable {
 
     @Id
+    @GeneratedValue
+    @Column(name = "CLIE_ID")
     private Long id;
+
+    @Column(name = "CLIE_NOME")
     private String nome;
+
+    @OneToMany(mappedBy = "cliente")
+    private Set<Aluguel> historicoAlugueis;
 
     @Override
     public String toString() {
