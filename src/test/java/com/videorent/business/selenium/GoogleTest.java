@@ -1,5 +1,6 @@
 package com.videorent.business.selenium;
 
+import com.videorent.util.ConfigUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,7 +10,7 @@ public class GoogleTest {
 
     public static void main(String[] args) {
 
-        System.setProperty("webdriver.chrome.driver","C:\\chromedriver\\chromedriver_win32\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver",ConfigUtil.getChromeWebDriver());
         WebDriver driver = new ChromeDriver();
 
         driver.get("https://www.google.com/");
