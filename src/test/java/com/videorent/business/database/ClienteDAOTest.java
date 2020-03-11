@@ -1,26 +1,21 @@
 package com.videorent.business.database;
 
-import com.videorent.business.database.config.JPAUtil;
 import com.videorent.business.database.impl.ClienteDAO;
 import com.videorent.business.model.Cliente;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class ClienteDAOTest {
-
-    private static EntityManager entityManager;
-    private DAO<Cliente> dao;
+public class ClienteDAOTest extends AbstractDAOTest<Cliente>{
 
     @Before
     public void init(){
-        entityManager = JPAUtil.getEntityManager();
+        super.init();
         dao = new ClienteDAO(entityManager);
     }
 

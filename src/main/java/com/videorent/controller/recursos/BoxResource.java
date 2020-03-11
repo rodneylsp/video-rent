@@ -2,6 +2,7 @@ package com.videorent.controller.recursos;
 
 import com.videorent.business.model.Aluguel;
 import com.videorent.business.service.IAluguelService;
+import com.videorent.exception.BusinessException;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -22,9 +23,13 @@ public class BoxResource {
     @Path("/inserir")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response inserir(Aluguel aluguel){
+    public Response inserir(Aluguel aluguel) {
 
-        service.inserir(aluguel);
+        try {
+            service.inserir(aluguel);
+        } catch (BusinessException e) {
+            e.printStackTrace();
+        }
 
         return Response.status(Response.Status.OK).build();
     }
