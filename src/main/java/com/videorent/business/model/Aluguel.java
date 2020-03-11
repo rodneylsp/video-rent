@@ -39,4 +39,12 @@ public class Aluguel implements AbstractEntity, Serializable {
     @Column(name = "ALUG_TOTAL")
     private Double total;
 
- }
+    @Override
+    public String toString() {
+        return "Aluguel{" +
+                "id=" + id +
+                ", data=" + data +
+                ", total=" + total +
+                '}';
+    }
+}

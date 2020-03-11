@@ -18,7 +18,7 @@ import java.util.Objects;
 public class AluguelServiceImpl implements IAluguelService {
 
     private static Logger logger = LogManager.getLogger(AluguelServiceImpl.class);
-    private static DAO<Aluguel> dao;
+    private DAO<Aluguel> dao;
 
     @Inject
     public AluguelServiceImpl(DAO<Aluguel> aluguelDAO){

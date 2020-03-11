@@ -17,7 +17,7 @@ import java.util.List;
 public class ClienteServiceImpl implements IClienteService {
 
     private static Logger logger = LogManager.getLogger(ClienteServiceImpl.class);
-    private static DAO<Cliente> dao;
+    private DAO<Cliente> dao;
 
     @Inject
     public ClienteServiceImpl(DAO<Cliente> clienteDAO){

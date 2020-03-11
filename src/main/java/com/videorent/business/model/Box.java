@@ -28,4 +28,11 @@ public class Box implements AbstractEntity, Serializable {
     @Column(name = "BOX_PRECO")
     private Double preco;
 
- }
+    @Override
+    public String toString() {
+        return "Box{" +
+                "id=" + id +
+                ", preco=" + preco +
+                '}';
+    }
+}

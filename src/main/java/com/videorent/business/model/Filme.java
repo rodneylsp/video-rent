@@ -30,4 +30,13 @@ public class Filme implements AbstractEntity, Serializable {
     @Enumerated(EnumType.STRING)
     private GeneroEnum genero;
 
+    @Override
+    public String toString() {
+        return "Filme{" +
+                "id=" + id +
+                ", titulo='" + titulo + '\'' +
+                ", ano=" + ano +
+                ", genero=" + genero +
+                '}';
+    }
 }
