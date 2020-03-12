@@ -9,5 +9,12 @@ public interface IClienteService {
 
     void inserir(Cliente cliente) throws BusinessException;
 
+    Cliente atualizar(Cliente cliente) throws BusinessException;
+
+    void remover(Long id) throws BusinessException;
+
     List<Cliente> findAll();
+
+    Cliente findById(Long id);
+
 }

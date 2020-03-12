@@ -42,4 +42,24 @@ public class AluguelServiceImpl implements IAluguelService {
         dao.insert(aluguel);
     }
 
+    @Override
+    public Aluguel atualizar(Aluguel aluguel) throws BusinessException {
+        return dao.update(aluguel);
+    }
+
+    @Override
+    public void remover(Long id) throws BusinessException {
+        dao.remove(dao.findById(id));
+    }
+
+    @Override
+    public List<Aluguel> findAll() {
+        return dao.findAll();
+    }
+
+    @Override
+    public Aluguel findById(Long id) {
+        return dao.findById(id);
+    }
+
 }
