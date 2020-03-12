@@ -12,7 +12,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @Path("/cliente")
-public class ClienteResource {
+public class ClienteResource extends AbstractResource{
 
     private static final Logger logger = LogManager.getLogger(ClienteResource.class);
 
@@ -36,9 +36,40 @@ public class ClienteResource {
     @GET
     @Path("/get")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getClientes(){
+    public Response getAll(){
         return Response.ok().entity(service.findAll()).build();
     }
 
+    @GET
+    @Path("/get/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getById(@PathParam("id") Long id){
+        return Response.ok().entity(service.findById(id)).build();
+    }
+
+    @DELETE
+    @Path("/remover/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response remover(@PathParam("id")Long id){
+        try {
+            service.remover(id);
+        } catch (BusinessException e) {
+            logger.error("Erro {}", e);
+        }
+        return Response.status(Response.Status.OK).build();
+    }
+
+    @PUT
+    @Path("/atualizar")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response atualizar(Cliente cliente){
+        try {
+            return Response.ok().entity(service.atualizar(cliente)).build();
+        } catch (BusinessException e) {
+            logger.error("Erro {}", e);
+        }
+        return Response.status(Response.Status.OK).build();
+    }
 
 }

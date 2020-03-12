@@ -1,37 +1,74 @@
 package com.videorent.controller.recursos;
 
-import com.videorent.business.model.Aluguel;
-import com.videorent.business.service.IAluguelService;
+import com.videorent.business.model.Box;
+import com.videorent.business.service.IBoxService;
 import com.videorent.exception.BusinessException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.Application;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @Path("/box")
 public class BoxResource {
 
+    private static final Logger logger = LogManager.getLogger(BoxResource.class);
+
     @Inject
-    IAluguelService service;
+    IBoxService service;
 
     @POST
     @Path("/inserir")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response inserir(Aluguel aluguel) {
+    public Response inserir(Box box){
 
         try {
-            service.inserir(aluguel);
+            service.inserir(box);
         } catch (BusinessException e) {
-            e.printStackTrace();
+            logger.error("Erro {}", e);
         }
-
         return Response.status(Response.Status.OK).build();
     }
 
+    @GET
+    @Path("/get")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAll(){
+        return Response.ok().entity(service.findAll()).build();
+    }
+
+    @GET
+    @Path("/get/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getById(@PathParam("id") Long id){
+        return Response.ok().entity(service.findById(id)).build();
+    }
+
+    @DELETE
+    @Path("/remover/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response remover(@PathParam("id")Long id){
+        try {
+            service.remover(id);
+        } catch (BusinessException e) {
+            logger.error("Erro {}", e);
+        }
+        return Response.status(Response.Status.OK).build();
+    }
+
+    @PUT
+    @Path("/atualizar")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response atualizar(Box box){
+        try {
+            return Response.ok().entity(service.atualizar(box)).build();
+        } catch (BusinessException e) {
+            logger.error("Erro {}", e);
+        }
+        return Response.status(Response.Status.OK).build();
+    }
 }
