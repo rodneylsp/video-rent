@@ -1,6 +1,8 @@
 package com.videorent.util;
 
-public interface Constantes {
+public final class Constantes {
+
+    private Constantes(){}
 
     public static final String ERROR_MSG_LOG = "Erro {}";
 

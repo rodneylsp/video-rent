@@ -6,10 +6,8 @@ import com.videorent.business.model.Cliente;
 import com.videorent.business.model.Filme;
 import com.videorent.business.model.enums.GeneroEnum;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 
 public class Main {
 
