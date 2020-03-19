@@ -7,9 +7,18 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class FilmeDAOTest extends AbstractDAOTest<Filme> {
+
+    @Test
+    public void deveEncontrarFilmePeloSeuID(){
+
+        dao = new FilmeDAO(entityManager);
+        List<Filme> filmes = dao.findAll();
+        assertEquals(2,filmes.size());
+    }
 
     @Test
     public void deveInserirFilmeNoBancoDeDados(){
@@ -22,19 +31,9 @@ public class FilmeDAOTest extends AbstractDAOTest<Filme> {
         dao = new FilmeDAO(entityManager);
         dao.insert(filme);
 
-        Filme filmeEncontrado = dao.findById(3L);
+        Filme filmeEncontrado = dao.findById(filme.getId());
         assertNotNull(filmeEncontrado);
         assertEquals("Maquina Mortifera", filmeEncontrado.getTitulo());
-
-//        List<Filme> clientes = dao.findAll();
-//        assertEquals(3, clientes.size());
-//        assertEquals(new Long(1), clientes.get(0).getId());
-//        assertEquals(new Long(10), clientes.get(1).getId());
-
-
-//        dao.remove(filmeEncontrado);
-//        filmeEncontrado = dao.findById(1L);
-//        assertNull(filmeEncontrado);
     }
 
 }

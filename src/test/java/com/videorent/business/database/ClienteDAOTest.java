@@ -6,7 +6,8 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class ClienteDAOTest extends AbstractDAOTest<Cliente>{
 
@@ -20,18 +21,9 @@ public class ClienteDAOTest extends AbstractDAOTest<Cliente>{
         dao = new ClienteDAO(entityManager);
         dao.insert(cliente);
 
-        Cliente clienteEncontrado = dao.findById(2L);
+        Cliente clienteEncontrado = dao.findById(cliente.getId());
         assertNotNull(clienteEncontrado);
         assertEquals("Rodney Luiz da Silva Pereira", clienteEncontrado.getNome());
-
-//        List<Cliente> clientes = dao.findAll();
-//        assertEquals(2, clientes.size());
-//        assertEquals(new Long(1), clientes.get(0).getId());
-//        assertEquals(new Long(10), clientes.get(1).getId());
-
-//        dao.remove(clienteEncontrado);
-//        clienteEncontrado = dao.findById(1L);
-//        assertNull(clienteEncontrado);
     }
 
     @Test

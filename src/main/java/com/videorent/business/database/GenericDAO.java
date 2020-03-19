@@ -17,7 +17,7 @@ public abstract class GenericDAO<T extends AbstractEntity>{
     private Class<T> tClass;
 
     public void insert(T entity) {
-        logger.debug("Inserindo entidade{}", entity);
+        logger.debug("Inserindo entidade {}", entity);
         EntityTransaction tx = entityManager.getTransaction();
         tx.begin();
         entityManager.persist(entity);
@@ -28,7 +28,9 @@ public abstract class GenericDAO<T extends AbstractEntity>{
 
     public T findById(Long id) {
         logger.debug("Buscando entidade por id {}", id);
-        return entityManager.find(tClass, id);
+        T entity = entityManager.find(tClass, id);
+        logger.debug("Entidade encontrada {}", entity);
+        return entity;
     }
 
 

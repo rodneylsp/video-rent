@@ -6,7 +6,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Currency;
 
 
 @Entity
@@ -32,6 +31,7 @@ public class Box implements AbstractEntity, Serializable {
     public String toString() {
         return "Box{" +
                 "id=" + id +
+                ", filme=" + filme +
                 ", preco=" + preco +
                 '}';
     }

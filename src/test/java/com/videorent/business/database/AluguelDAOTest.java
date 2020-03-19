@@ -11,11 +11,12 @@ import org.junit.Test;
 import java.util.Date;
 import java.util.HashSet;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class AluguelDAOTest extends AbstractDAOTest<Aluguel>{
 
-    //@Test
+    @Test
     public void deveInserirAluguelNoBancoDeDados(){
 
         Aluguel aluguelParaCadastrar = initAluguel();
@@ -23,14 +24,11 @@ public class AluguelDAOTest extends AbstractDAOTest<Aluguel>{
         dao = new AluguelDAO(entityManager);
         dao.insert(aluguelParaCadastrar);
 
-        Aluguel aluguelCadastrado = dao.findById(1L);
+        Aluguel aluguelCadastrado = dao.findById(aluguelParaCadastrar.getId());
         assertNotNull(aluguelCadastrado);
-        assertEquals(new Long(1), aluguelCadastrado.getId());
-        assertEquals(new Double(11.5), aluguelCadastrado.getTotal());
+        assertEquals(1, aluguelCadastrado.getBoxes().size());
+        assertEquals(Double.valueOf(11.5), aluguelCadastrado.getTotal());
 
-//        dao.remove(aluguelCadastrado);
-//        aluguelCadastrado = dao.findById(1L);
-//        assertNull(aluguelCadastrado);
     }
 
 
