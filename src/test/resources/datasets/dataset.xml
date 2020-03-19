@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+
+    <CLIENTE
+            CLIE_ID="10"
+            CLIE_NOME="Rodney Luiz da Silva Pereira"
+    />
+
+    <FILME
+            FILM_ID="10"
+            FILM_TITULO="Matrix"
+            FILM_ANO="1999"
+            FILM_GENERO="FICCAO"
+    />
+
+    <FILME
+            FILM_ID="100"
+            FILM_TITULO="Predador"
+
+            FILM_ANO="1986"
+            FILM_GENERO="FICCAO"
+    />
+
+    <BOX
+        BOX_ID="10"
+        FILM_ID="10"
+        BOX_PRECO="10.5"
+    />
+
+<!--    <EMPTY_TABLE/>-->
+</dataset>
