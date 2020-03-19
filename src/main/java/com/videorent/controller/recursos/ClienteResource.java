@@ -11,6 +11,8 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import static com.videorent.util.Constantes.ERROR_MSG_LOG;
+
 @Path("/cliente")
 public class ClienteResource extends AbstractResource{
 
@@ -28,7 +30,7 @@ public class ClienteResource extends AbstractResource{
         try {
             service.inserir(cliente);
         } catch (BusinessException e) {
-            logger.error("Erro {}", e);
+            logger.error(ERROR_MSG_LOG, e);
         }
         return Response.status(Response.Status.OK).build();
     }
@@ -54,7 +56,7 @@ public class ClienteResource extends AbstractResource{
         try {
             service.remover(id);
         } catch (BusinessException e) {
-            logger.error("Erro {}", e);
+            logger.error(ERROR_MSG_LOG, e);
         }
         return Response.status(Response.Status.OK).build();
     }
@@ -67,7 +69,7 @@ public class ClienteResource extends AbstractResource{
         try {
             return Response.ok().entity(service.atualizar(cliente)).build();
         } catch (BusinessException e) {
-            logger.error("Erro {}", e);
+            logger.error(ERROR_MSG_LOG, e);
         }
         return Response.status(Response.Status.OK).build();
     }
